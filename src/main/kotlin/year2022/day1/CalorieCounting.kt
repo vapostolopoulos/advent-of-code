@@ -1,23 +1,11 @@
 package year2022.day1
 
+import java.io.File
+
+private const val FILE = "src/main/kotlin/year2022/day1/puzzle.input"
+
 fun main() {
-  val input = listOf(
-    "1000",
-    "2000",
-    "3000",
-    "    ",
-    "4000",
-    "    ",
-    "5000",
-    "6000",
-    "    ",
-    "7000",
-    "8000",
-    "9000",
-    "    ",
-    "10000",
-    "    ",
-  )
+  val input = File(FILE).readLines().plus("")
 
   println("Part One: ${partOne(input)}")
 
