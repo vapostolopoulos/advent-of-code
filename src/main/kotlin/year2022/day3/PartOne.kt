@@ -12,7 +12,7 @@ internal fun partOne(input: List<String>): Int =
 private fun findCommonLetter(first: String, second: String): Char =
   first.toSet().intersect(second.toSet()).first()
 
-private fun calculateLetterPriority(char: Char): Int =
+internal fun calculateLetterPriority(char: Char): Int =
   if (char.isLowerCase())
     char.code - 96
   else
