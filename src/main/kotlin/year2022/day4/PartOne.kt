@@ -1,7 +1,7 @@
 package year2022.day4
 
-private const val ZERO = 0
-private const val ONE = 1
+internal const val ZERO = 0
+internal const val ONE = 1
 
 internal fun partOne(input: List<String>): Int =
   input.sumOf {
@@ -12,7 +12,7 @@ internal fun partOne(input: List<String>): Int =
       ZERO
   }
 
-private fun splitInputToNumbers(row: String): List<Int> =
+internal fun splitInputToNumbers(row: String): List<Int> =
   row.split(",").flatMap { it.split("-") }.map { it.toInt() }
 
 private fun oneSequenceContainsTheOther(numbers: List<Int>) =
