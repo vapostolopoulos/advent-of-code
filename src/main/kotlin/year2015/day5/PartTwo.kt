@@ -4,26 +4,13 @@ internal fun partTwo(input: List<String>): Int =
   input.count { it.isNice() }
 
 private fun String.isNice(): Boolean =
-  pairOfAnyTwoLettersAppearsTwiceNoOverlap() && letterRepeatsWithExactlyOneLetterBetween()
+  hasPairThatAppearsTwiceWithNoOverlap() && hasRepeatingLetterWithOneLetterBetween()
 
-private fun String.pairOfAnyTwoLettersAppearsTwiceNoOverlap(): Boolean {
-  val allPossiblePairsList = this.zipWithNext()
-  for (i in 0..<allPossiblePairsList.size - 1) {
-    for (j in (i + 1)..<(allPossiblePairsList.size)) {
-      if (allPossiblePairsList[i] == allPossiblePairsList[j] && (j != i + 1)) {
-        return true
-      }
-    }
+private fun String.hasPairThatAppearsTwiceWithNoOverlap(): Boolean =
+  (0..<length - 1).any { i ->
+    val pair = substring(i, i + 2)
+    substring(i + 2).contains(pair)
   }
-  return false
-}
 
-private fun String.letterRepeatsWithExactlyOneLetterBetween(): Boolean {
-  val allPossiblePairsList = this.zipWithNext()
-  for (i in 0..<allPossiblePairsList.size - 1) {
-    if (allPossiblePairsList[i].first == allPossiblePairsList[i + 1].second) {
-      return true
-    }
-  }
-  return false
-}
+private fun String.hasRepeatingLetterWithOneLetterBetween(): Boolean =
+  windowed(3).any { it[0] == it[2] }
